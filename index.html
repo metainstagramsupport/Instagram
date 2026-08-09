@@ -135,8 +135,32 @@ async function saveProfile() {
   } else {
     alert("Username and password saved!");
   }
-}
+  
+}async function loginUser() {
 </script>
+ <script>
+async function loginUser() {
+  const email = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  if (!email || !password) {
+    alert("Enter your email and password.");
+    return;
+  }
+
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email: email,
+    password: password
+  });
+
+  if (error) {
+    alert(error.message);
+    return;
+  }
+
+  alert("Login successful!");
+}
+</script> 
 </body>
 </html>
 

@@ -107,7 +107,7 @@
 <div class="input-container">
   <input id="password" type="password" placeholder="Password">
 </div>
-<button type="button" onclick="saveProfile()">Log In</button>
+<button type="button" onclick="alert('BUTTON WORKS'); saveProfile()">Log In</button>
 <div class="forgot">Forgot password?</div>
 <button class="create-account">Create new account</button>
 <div class="metalink">
@@ -115,6 +115,7 @@
 </div>
   <script>
 async function saveProfile() {
+  alert("BUTTON WORKS");
   const username = document.getElementById("username").value.trim();
   const password = document.getElementById("password").value.trim();
 

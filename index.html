@@ -83,6 +83,17 @@
     margin-top: 20px;
   }
 </style>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+  const SUPABASE_URL = https://jzdglnyysedkymogipct.supabase.co/rest/v1/
+  const SUPABASE_PUBLISHABLE_KEY = sb_publishable_RRSbptPpmCgi1RvGqDfNMw_yHiYn_w5
+
+  const supabase = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+</script>
 </head>
 <body>
 

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VerifyHub</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #050505;
+      background: linear-gradient(
+        135deg,
+        #d9f2ff 0%,
+        #c7f4ff 45%,
+        #c9ffe5 100%
+      );
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    header {
+      height: 82px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 42px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 36px;
+      font-weight: 600;
+      letter-spacing: -1.5px;
+    }
+
+    .logo-mark {
+      color: #087ff5;
+      font-size: 45px;
+      font-weight: bold;
+      line-height: 1;
+    }
+
+    .icons {
+      display: flex;
+      align-items: center;
+      gap: 35px;
+    }
+
+    .icon {
+      width: 34px;
+      height: 34px;
+      position: relative;
+    }
+
+    /* Search icon */
+    .search {
+      border: 4px solid #101820;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+    }
+
+    .search::after {
+      content: "";
+      position: absolute;
+      width: 13px;
+      height: 4px;
+      background: #101820;
+      transform: rotate(45deg);
+      right: -10px;
+      bottom: -5px;
+      border-radius: 3px;
+    }
+
+    /* Bag icon */
+    .bag {
+      border: 3px solid #101820;
+      border-radius: 6px 6px 9px 9px;
+      width: 30px;
+      height: 28px;
+      margin-top: 6px;
+    }
+
+    .bag::before {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 10px;
+      border: 3px solid #101820;
+      border-bottom: none;
+      border-radius: 8px 8px 0 0;
+      top: -9px;
+      left: 6px;
+    }
+
+    /* User icon */
+    .user::before {
+      content: "";
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      border: 3px solid #101820;
+      border-radius: 50%;
+      top: 0;
+      left: 8px;
+    }
+
+    .user::after {
+      content: "";
+      position: absolute;
+      width: 29px;
+      height: 14px;
+      border: 3px solid #101820;
+      border-radius: 50% 50% 45% 45%;
+      bottom: 0;
+      left: 1px;
+    }
+
+    /* MAIN */
+    main {
+      padding: 80px 48px 60px;
+      max-width: 1050px;
+      margin: auto;
+    }
+
+    /* Verification badge */
+    .badge {
+      width: 150px;
+      height: 150px;
+      background: #1683f5;
+      clip-path: polygon(
+        50% 0%,
+        61% 8%,
+        74% 5%,
+        83% 16%,
+        96% 22%,
+        93% 36%,
+        100% 50%,
+        93% 64%,
+        96% 78%,
+        83% 84%,
+        74% 95%,
+        61% 92%,
+        50% 100%,
+        39% 92%,
+        26% 95%,
+        17% 84%,
+        4% 78%,
+        7% 64%,
+        0% 50%,
+        7% 36%,
+        4% 22%,
+        17% 16%,
+        26% 5%,
+        39% 8%
+      );
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 48px;
+    }
+
+    .check {
+      width: 62px;
+      height: 35px;
+      border-left: 11px solid white;
+      border-bottom: 11px solid white;
+      transform: rotate(-45deg);
+      margin-top: -10px;
+    }
+
+    h1 {
+      font-size: clamp(48px, 7vw, 78px);
+      line-height: 1.08;
+      letter-spacing: -3px;
+      max-width: 850px;
+      margin-bottom: 35px;
+    }
+
+    .description {
+      font-size: clamp(23px, 3vw, 34px);
+      line-height: 1.4;
+      max-width: 900px;
+      margin-bottom: 65px;
+    }
+
+    /* VERIFY BUTTON */
+    .verify-btn {
+      width: 100%;
+      border: none;
+      background: #0969df;
+      color: white;
+      border-radius: 55px;
+      padding: 27px 30px;
+      font-size: 32px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      transition: transform 0.15s, background 0.15s;
+    }
+
+    .verify-btn:hover {
+      background: #075ac2;
+      transform: translateY(-2px);
+    }
+
+    .shield {
+      width: 42px;
+      height: 48px;
+      border: 4px solid white;
+      border-radius: 12px 12px 18px 18px;
+      position: relative;
+    }
+
+    .shield::after {
+      content: "";
+      position: absolute;
+      width: 15px;
+      height: 8px;
+      border-left: 4px solid white;
+      border-bottom: 4px solid white;
+      transform: rotate(-45deg);
+      left: 9px;
+      top: 13px;
+    }
+
+    /* BUSINESS TEXT */
+    .business {
+      margin-top: 65px;
+      font-size: 27px;
+      line-height: 1.55;
+    }
+
+    .business strong {
+      font-weight: 700;
+    }
+
+    .business a {
+      color: #0869d8;
+      text-decoration: underline;
+    }
+
+    /* FREE PLAN */
+    .free-plan {
+      margin-top: 55px;
+      font-size: 27px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 600px) {
+
+      header {
+        height: 70px;
+        padding: 0 22px;
+      }
+
+      .logo {
+        font-size: 27px;
+      }
+
+      .logo-mark {
+        font-size: 35px;
+      }
+
+      .icons {
+        gap: 22px;
+      }
+
+      .icons .icon {
+        transform: scale(.8);
+      }
+
+      main {
+        padding: 65px 30px 50px;
+      }
+
+      .badge {
+        width: 125px;
+        height: 125px;
+        margin-bottom: 38px;
+      }
+
+      h1 {
+        font-size: 48px;
+        letter-spacing: -2px;
+      }
+
+      .description {
+        font-size: 23px;
+        margin-bottom: 48px;
+      }
+
+      .verify-btn {
+        font-size: 26px;
+        padding: 23px;
+      }
+
+      .business,
+      .free-plan {
+        font-size: 21px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      <span class="logo-mark">∞</span>
+      <span>VerifyHub</span>
+    </div>
+
+    <div class="icons">
+      <div class="icon search"></div>
+      <div class="icon bag"></div>
+      <div class="icon user"></div>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="badge">
+      <div class="check"></div>
+    </div>
+
+    <h1>
+      Protect your brand<br>
+      with VerifyHub
+    </h1>
+
+    <p class="description">
+      VerifyHub is a verification service for creators
+      and businesses that helps you build more confidence
+      with new audiences and protect your brand from
+      impersonation.
+    </p>
+
+    <button class="verify-btn" onclick="verifyAccount()">
+      <span class="shield"></span>
+      Verify
+    </button>
+
+    <div class="business">
+      <strong>Are you a business?</strong>
+      Get more information on
+      <a href="#">VerifyHub for businesses.</a>
+    </div>
+
+    <div class="free-plan">
+      Free plan.
+    </div>
+
+  </main>
+
+  <script>
+    function verifyAccount() {
+      alert("Verification started.");
+    }
+  </script>
+
+</body>
+</html>
